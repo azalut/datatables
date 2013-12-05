@@ -14,7 +14,7 @@
 <h:form>
 	<h:dataTable value="#{flower.flowerList}" var="o">
 		<h:column><f:facet name="header">ID:</f:facet> #{o.id}</h:column>
-		<h:column><f:facet name="header">Name:</f:facet> #{o.name}</h:column>
+		<h:column><f:facet name="header">Name::</f:facet> #{o.name}</h:column>
 		<h:column><f:facet name="header">Color:</f:facet> #{o.color}</h:column>
 		<h:column><f:facet name="header">Size:</f:facet> #{o.size}</h:column>
 		<h:column><f:facet name="header">Delete:</f:facet> <h:commandLink value="Delete" action="#{flower.delete(o)}"/></h:column>
