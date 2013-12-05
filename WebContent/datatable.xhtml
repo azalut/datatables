@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:head>
+    	<h:outputStylesheet library="css" name="table-style.css"  />
+    </h:head>
+    <h:body>
+ 
+    	<h1>JSF 2 dataTable example</h1>
+ <h:form>
+    		<h:dataTable value="#{order.orderList}" var="n"
+    		headerClass="header" styleClass="style" rowClasses="row">
+    			<h:column>
+    				<f:facet name="header">Order</f:facet>
+    				<h:inputText value="#{n.orderNo}" size="10" rendered="#{n.editable}"/>
+    				<h:outputText value="#{n.orderNo}" rendered="#{not n.editable}"/>
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header">Product</f:facet>
+    				<h:inputText value="#{n.productName}" size="10" rendered="#{n.editable}"/>
+    				<h:outputText value="#{n.productName}" rendered="#{not n.editable}"/>
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header">Price</f:facet>
+    				<h:inputText value="#{n.price}" size="10" rendered="#{n.editable}"/>
+    				<h:outputText value="#{n.price}" rendered="#{not n.editable}"/>
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header">Qty</f:facet>
+    				<h:inputText value="#{n.qty}" size="10" rendered="#{n.editable}"/>
+    				<h:outputText value="#{n.qty}" rendered="#{not n.editable}"/>
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header">Action</f:facet>
+    				<h:panelGrid>
+    					<h:commandLink value="Usuń" action="#{order.usun(n)}"/>
+    					<h:commandLink value="Edytuj" action="#{order.edytuj(n)}" rendered="#{not n.editable}"/>
+    				</h:panelGrid>
+    			</h:column>
+    		</h:dataTable>
+    		
+    		<h:panelGrid columns="2">
+    			Number of order: <h:inputText value="#{order.orderNo}"/>
+    			Product: <h:inputText value="#{order.productName}"/>
+    			Price: <h:inputText value="#{order.price}"/>
+    			Qty: <h:inputText value="#{order.qty}"/>
+    			<h:commandButton value="Dodaj" action="#{order.dodaj}"/>
+    			<h:commandButton value="Zapisz zmiany" action="#{order.zapisz}"/>
+    		</h:panelGrid>
+ </h:form>
+    </h:body>
+</html>
